@@ -10,6 +10,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    /** @var UserPasswordHasherInterface */
     private $passwordEncoder;
 
     public function __construct(UserPasswordHasherInterface $passwordEncoder)
@@ -24,6 +25,7 @@ class AppFixtures extends Fixture
         $user->setNom('nom');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setEmail('admin@mail.com');
+        $user->setEnabled(true);
         $user->setPassword($this->passwordEncoder->hashPassword($user, 'Test1234?'));
         $manager->persist($user);
 
@@ -33,8 +35,6 @@ class AppFixtures extends Fixture
             $comment->setUser($user);
             $manager->persist($comment);
         }
-        // $product = new Product();
-        // $manager->persist($product);
 
         $manager->flush();
     }

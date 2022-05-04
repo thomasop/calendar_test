@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+    {% if app.user %}
+        <div class="container">
+            <h1 class="text-center mt-5">Déjà connecté</h1>
+            <p class="mt-5 mb-5">Vous étes déjà connecté {{ app.user.prenom|capitalize }} {{ app.user.nom|capitalize }}. <a class="btn btn-primary" href="{{ path('app_logout') }}">Déconnexion</a></p>
+        </div>
+    {% else %}
+        <section>
+        <h1 class="text-center mt-5 mb-5">Connexion</h1>
+            <article>
+            <h2>Formulaire de Connexion</h2>
+                <form action="{{ path('login') }}" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="_username" value="{{ last_username }}">
+                        <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="_password">
+                    </div>
+                    <input type="hidden" name="_target_path" value="/login"/>
+        
+                    <button name="login" type="submit" class="btn btn-primary">Connexion</button>
+                </form>
+            </article>
+        </section>
+    {% endif %}
+</main>
+    
+{% include 'footer.html.twig' %}
+{% endblock %}

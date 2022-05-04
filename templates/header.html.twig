@@ -1,0 +1,30 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <figure>
+            <a class="navbar-brand" href=""><img src="{{ asset('/build/dent.1ddb1371.png') }}" alt="logo"></a>
+            <figcaption>Dentiste</figcaption>
+        </figure>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="menu navbar-nav mr-auto">
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('app_logout') }}">Deconnection</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('login') }}">Connection</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+            {% endif %}
+          </ul>
+        </div>
+    </nav>
+</header>
