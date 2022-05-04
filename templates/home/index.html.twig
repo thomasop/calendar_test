@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <div class="row">
+        <section>
+            <h1 class="mt-5 text-center mb-5">Accueil</h1>
+            <div class="home-flex">
+                <article class="bg-light border border-3 rounded border-dark margin-pres mb-3">
+                    <h2 class="text-center mb-2 mt-3">Presentation</h2>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.</p>
+                </article>
+                <article class="bg-light border border-3 rounded border-dark margin-home mb-3">
+                    <h2 class="text-center mb-2 mt-3">Info covid</h2>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis maxime, velit perspiciatis nihil excepturi a. Laborum obcaecati unde magni ipsum cum. Tenetur nulla ut at totam facilis voluptatum vitae inventore.</p>
+                </article>
+            </div>
+        </section>
+        <section>
+            <h1 class="text-center mt-5 mb-5">Présentation de l'équipe</h1>
+            <div class="d-flex justify-content-between flex-wrap mb-5 mx-auto w-pres">
+                <article class="bg-light border border-3 rounded border-dark margin-pres">
+                    <h2 class="text-center">Dr Thomas</h2>
+                    <figure class="text-center">
+                        <img class="" src="{{ asset('/build/dent.1ddb1371.png') }}" alt="Dr Thomas">
+                    </figure>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis max</p>
+                </article>
+                <article class="bg-light border border-3 rounded border-dark margin-team">
+                    <h2 class="text-center">Dr Robert</h2>
+                    <figure class="text-center">
+                        <img class="" src="{{ asset('/build/dent.1ddb1371.png') }}" alt="Dr Robert">
+                    </figure>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis max</p>
+                </article>
+                <article class="bg-light border border-3 rounded border-dark margin-team">
+                    <h2 class="text-center">Hôte d'accueil, Julie</h2>
+                    <figure class="text-center">
+                        <img class="" src="{{ asset('/build/dent.1ddb1371.png') }}" alt="Julie">
+                    </figure>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis max</p>
+                </article>
+                <article class="bg-light border border-3 rounded border-dark margin-info">
+                    <h2 class="text-center">Hôte d'accueil, Mathilde</h2>
+                    <figure class="text-center">
+                        <img class="" src="{{ asset('/build/dent.1ddb1371.png') }}" alt="Mathilde">
+                    </figure>
+                    <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis max</p>
+                </article>
+            </div>
+        </section>
+    </div>
+</main>
+{% include 'footer.html.twig' %}
+{% endblock %}

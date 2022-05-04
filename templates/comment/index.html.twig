@@ -10,7 +10,7 @@
         <section>
             <h1 class="text-center mt-5 mb-5">Avis client</h1>
             <div class="d-flex flex-column w-25">
-                <a class="btn btn-primary" href="">Retour page d'accueil</a>
+                <a class="btn btn-primary" href="{{ path('home') }}">Retour page d'accueil</a>
                 {% if app.user %}
                     {% if app.user.roles[0] == "ROLE_USER" or "ROLE_ADMIN"%}
                         <button name="modal" id="myInput" type="button" class="btn btn-primary mt-5 mb-5" data-toggle="modal" data-target="#exampleModal">
