@@ -1,6 +1,6 @@
-# celendar_test
+# calendar_test
 
-Welcome in your celendar_test.
+Welcome in your calendar_test.
 
 ## How to install the project
 
@@ -15,7 +15,7 @@ Composer
 
 ### Clone
 Go in directory.
-Make a clone with git clone https://github.com/thomasop/celendar_test.git
+Make a clone with git clone https://github.com/thomasop/calendar_test.git
 
 ### Configuration
 Update environnements variables in the .env file with your values.
@@ -23,7 +23,7 @@ At the very least you need to define the SYMFONY_ENV=prod
 MAILER_URL
 
 ### Composer
-Install composer with composer install and init the projet with composer init in celendar_test
+Install composer with composer install and init the projet with composer init in calendar_test
 
 ### Start the project
 At the root of your project use the command php bin/console server:start -d
