@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use DateTime;
-use App\Entity\User;
 use App\Entity\Booking;
 use App\Entity\Comment;
-use Doctrine\Persistence\ObjectManager;
+use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture

@@ -15,8 +15,8 @@ class CommentControllerTest extends WebTestCase
         $this->client = static::createClient();
         $crawler = $this->client->request('GET', '/commentaires');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -48,8 +48,8 @@ class CommentControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/commentaire/modification/1');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -81,8 +81,8 @@ class CommentControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/commentaire/suppression/1');
         static::assertEquals(
-        Response::HTTP_FOUND,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 }

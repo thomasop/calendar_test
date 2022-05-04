@@ -2,19 +2,17 @@
 
 namespace App\Handler;
 
-use App\Repository\UserRepository;
 use App\Tool\EntityManager;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class FormCommentHandler
 {
     /** @var TokenStorageInterface */
     private $tokenStorageInterface;
-     /** @var EntityManager */
+    /** @var EntityManager */
     private $entityManager;
-     /** @var RequestStack */
+    /** @var RequestStack */
     private $request;
 
     public function __construct(TokenStorageInterface $tokenStorageInterface, EntityManager $entityManager, RequestStack $request)

@@ -70,6 +70,7 @@ class FormBookingHandler
 
             return true;
         }
+
         return false;
     }
 }

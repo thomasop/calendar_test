@@ -3,8 +3,8 @@
 namespace App\tests\Controller;
 
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 class BookingControllerTest extends WebTestCase
 {
@@ -19,8 +19,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/calendrier');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -33,8 +33,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation');
         static::assertEquals(
-        Response::HTTP_MOVED_PERMANENTLY,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_MOVED_PERMANENTLY,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -47,8 +47,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/1');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -61,8 +61,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/1/edit/Thu%May%05%2022%12:00:00%GMT+0200%(CEST)/Thu%May%05%2022%12:30:00%GMT+0200%(CEST)');
         static::assertEquals(
-        Response::HTTP_FOUND,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -75,8 +75,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/1/edit');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -110,8 +110,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/1');
         static::assertEquals(
-        Response::HTTP_OK,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_OK,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 
@@ -124,8 +124,8 @@ class BookingControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
         $crawler = $this->client->request('GET', '/réservation/new/Thu%May%05%2022%12:00:00%GMT+0200%(CEST)');
         static::assertEquals(
-        Response::HTTP_FOUND,
-        $this->client->getResponse()->getStatusCode()
+            Response::HTTP_FOUND,
+            $this->client->getResponse()->getStatusCode()
         );
     }
 }

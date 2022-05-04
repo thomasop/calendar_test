@@ -34,7 +34,7 @@ class BookingController extends AbstractController
         $this->formBookingHandler = $formBookingHandler;
     }
 
-    #[route('/calendrier', name: 'booking_calendar', methods: ["GET", "POST"])]
+    #[route('/calendrier', name: 'booking_calendar', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_USER', statusCode: 404, message: 'Vous n\'avez pas accés à cette page')]
     public function calendar(): Response
     {
@@ -45,7 +45,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[route('/', name: 'booking_index', methods: ["GET"])]
+    #[route('/', name: 'booking_index', methods: ['GET'])]
     #[IsGranted('ROLE_ADMIN', statusCode: 404, message: 'Vous n\'avez pas accés à cette page')]
     public function index(BookingRepository $bookingRepository): Response
     {
@@ -54,7 +54,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[route('/{id}', name: 'booking_show', methods: ["GET"])]
+    #[route('/{id}', name: 'booking_show', methods: ['GET'])]
     #[IsGranted('ROLE_USER', statusCode: 404, message: 'Vous n\'avez pas accés à cette page')]
     public function show(Booking $booking): Response
     {
@@ -122,7 +122,7 @@ class BookingController extends AbstractController
         return $this->redirectToRoute('booking_calendar');
     }
 
-    #[route('/{id}', name: 'booking_delete', methods: ["POST"])]
+    #[route('/{id}', name: 'booking_delete', methods: ['POST'])]
     #[IsGranted('ROLE_USER', statusCode: 404, message: 'Vous n\'avez pas accés à cette page')]
     public function delete(Request $request, Booking $booking, EntityManager $entityManager): Response
     {
@@ -133,6 +133,7 @@ class BookingController extends AbstractController
                 'Rendez-vous supprimé !'
             );
         }
+
         return $this->redirectToRoute('booking_calendar', [], Response::HTTP_SEE_OTHER);
     }
 
