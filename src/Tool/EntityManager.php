@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class EntityManager
 {
+    /** @var EntityManagerInterface */
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManger)
@@ -13,18 +14,18 @@ class EntityManager
         $this->entityManager = $entityManger;
     }
 
-    public function Add(object $entity)
+    public function Add(object $entity): void
     {
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
     }
 
-    public function update()
+    public function update(): void
     {
         $this->entityManager->flush();
     }
 
-    public function remove(object $entity)
+    public function remove(object $entity): void
     {
         $this->entityManager->Remove($entity);
         $this->entityManager->flush();
