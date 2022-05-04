@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier utilisateur{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<section class="container">
+<h1 class="text-center mt-5 mb-5">Modifier utilisateur</h1>
+    <article>
+    <h2>Formulaire de modification d'utilisateur</h2>
+        {{ form_start(form) }}
+            <section class="text-danger">{{ form_errors(form) }}</section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(form.prenom) }}</div>
+                {{ form_label(form.prenom) }}
+                <div>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(form.prenom) }}</small>
+            </section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(form.nom) }}</div>
+                {{ form_label(form.nom) }}
+                <div>{{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(form.nom) }}</small>
+            </section>
+            <button name="update" class="btn btn-outline-primary mb-4" type="submit">Modifiez</button>
+        {{ form_end(form) }}
+    </article>
+</section>
+{% include 'footer.html.twig' %}
+{% endblock %}

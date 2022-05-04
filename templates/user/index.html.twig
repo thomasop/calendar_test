@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <section>
+    <h1 class="text-center mt-5 mb-5">Interface utilisateur : {{ user.prenom|capitalize }} {{ user.nom|capitalize }}</h1>
+        <article>
+            <h2>Modifier votre pseudo</h2>
+            <a class="btn btn-primary" href="{{ path('update', {id: app.user.id}) }}">Modifier </a>
+        </article>
+        <article>
+            <h2 class="mt-5">Supprimer votre compte</h2>
+            {{ include('user/deleteOne_user.html.twig') }}
+        </article>
+    </section>
+</main>
+{% include 'footer.html.twig' %}
+{% endblock %}

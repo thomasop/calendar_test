@@ -64,6 +64,47 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    public function search($prenom, $nom)
+    {
+        $query = $this->createQueryBuilder('u');
+        // all users
+        if ((null == $prenom) && (null == $nom)) {
+            $query->select('u');
+
+            return $query->getQuery()->getResult();
+        }
+        // user with prenom and nom and demande envoyé
+        if ((null != $prenom) && (null != $nom)) {
+            $query->select('u')
+            ->Where('MATCH_AGAINST(u.prenom) AGAINST(:prenom boolean)>0')
+            ->Where('MATCH_AGAINST(u.nom) AGAINST(:nom boolean)>0')
+            ->setParameters(new ArrayCollection([
+                new Parameter('prenom', '*'.$prenom.'*'),
+                new Parameter('nom', '*'.$nom.'*'),
+            ]));
+
+            return $query->getQuery()->getResult();
+        }
+
+        if ((null != $prenom) && (null == $nom)) {
+            $query->select('u')
+            ->Where('MATCH_AGAINST(u.prenom) AGAINST(:prenom boolean)>0')
+            ->setParameters(new ArrayCollection([
+                new Parameter('prenom', '*'.$prenom.'*'),
+            ]));
+
+            return $query->getQuery()->getResult();
+        }
+        if ((null == $prenom) && (null != $nom)) {
+            $query->select('u')
+            ->Where('MATCH_AGAINST(u.nom) AGAINST(:nom boolean)>0')
+            ->setParameters(new ArrayCollection([
+                new Parameter('nom', '*'.$nom.'*'),
+            ]));
+
+            return $query->getQuery()->getResult();
+        }
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

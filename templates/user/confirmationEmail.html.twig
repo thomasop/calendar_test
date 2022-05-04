@@ -1,0 +1,3 @@
+Pour vous connecter, allez sur : <a href="{{ url('app_verify_email', {'token': token}) }}">Verification</a>
+(ce lien est valide jusqu'à {{ expiration_date|date('F jS') }})
+Merci!

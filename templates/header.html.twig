@@ -13,16 +13,25 @@
           <ul class="menu navbar-nav mr-auto">
             {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link header-link" href="{{ path('app_logout') }}">Deconnection</a>
+                    <a class="nav-link header-link" href="{{ path('user', {id: app.user.id}) }}">Profile</a>
                 </li>
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link header-link" href="{{ path('login') }}">Connection</a>
                 </li>
-            {% endif %}
-            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('register') }}">Inscription</a>
+                </li>
             {% endif %}
             {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('userall') }}">Utilisateur</a>
+                </li>
+            {% endif %}
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('app_logout') }}">Deconnection</a>
+                </li>
             {% endif %}
           </ul>
         </div>

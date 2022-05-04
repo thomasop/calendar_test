@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <h1 class="text-center mt-5 mb-5">Utilisateurs</h1>
+
+    <button id="myInput" type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#exampleModal">
+        Rechercher un utilisateur
+    </button>
+        
+        <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Recherche</h5>
+                    <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ form_start(form) }}
+                            <section class="text-danger">{{ form_errors(form) }}</section>
+                            <section class="form-group">
+                                <div class="text-danger">{{ form_errors(form.prenom) }}</div>
+                                <label>{{ form_label(form.prenom) }}</label>
+                                <div>{{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}</div>
+                                <small class="form-text text-muted">{{ form_help(form.prenom) }}</small>
+                            </section>
+                            <section class="form-group">
+                                <div class="text-danger">{{ form_errors(form.nom) }}</div>
+                                <label>{{ form_label(form.nom) }}</label>
+                                <div>{{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}</div>
+                                <small class="form-text text-muted">{{ form_help(form.nom) }}</small>
+                            </section>
+                            <button class="btn btn-primary mb-5 mt-3">{{ button_label|default('Rechercher') }}</button>
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="modal-footer">
+                    <button id="closeFooter" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if users != null %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set utilisateur = ["ROLE_USER"] %}
+            {% set admin = ["ROLE_ADMIN", "ROLE_USER"] %}
+            {% set admine = ["ROLE_USER", "ROLE_ADMIN"] %}
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.prenom|capitalize }} {{ user.nom|capitalize }}</td>
+                    <td class="d-flex justify-content-between">
+                        <a class="btn btn-primary" href="{{ path('user', {'id': user.id}) }}">Profile</a>
+                        {{ include('user/delete_user.html.twig') }}
+                    </td>
+                </tr>
+            {% endfor %}    
+            </tbody>
+        </table>
+    {% else %}
+        
+        <p class="mt-5">Vous pouvez rechercher des utilisateurs :</p>
+        <ul class="mb-5">
+            <li>Tous les utilisateur(pas de nom et prénom et demande),</li>
+            <li>Par nom et prénom(saisie du nom et prénom),</li>
+        </ul>
+    {% endif %}
+</main>
+{% include 'footer.html.twig' %}
+{% endblock %}

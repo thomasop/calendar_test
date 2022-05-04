@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <section class="row">
+    <h1 class="text-center mt-5 mb-5">Inscription</h1>
+        <article>
+        {{ form_start(registrationForm) }}
+            <section class="text-danger">{{ form_errors(registrationForm) }}</section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(registrationForm.prenom) }}</div>
+                {{ form_label(registrationForm.prenom) }}
+                <div>{{ form_widget(registrationForm.prenom, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(registrationForm.prenom) }}</small>
+            </section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(registrationForm.nom) }}</div>
+                {{ form_label(registrationForm.nom) }}
+                <div>{{ form_widget(registrationForm.nom, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(registrationForm.nom) }}</small>
+            </section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(registrationForm.email) }}</div>
+                {{ form_label(registrationForm.email) }}
+                <div>{{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(registrationForm.email) }}</small>
+            </section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(registrationForm.password.first) }}</div>
+                {{ form_label(registrationForm.password.first) }}
+                <div>{{ form_widget(registrationForm.password.first, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(registrationForm.password.first) }}</small>
+            </section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(registrationForm.password.second) }}</div>
+                {{ form_label(registrationForm.password.second) }}
+                <div>{{ form_widget(registrationForm.password.second, { 'attr': {'class': 'form-control'} }) }}</div>
+                <small class="form-text text-muted">{{ form_help(registrationForm.password.second) }}</small>
+            </section>
+            <button name="register" type="submit" class="btn btn-primary mt-3">Inscription</button>
+        {{ form_end(registrationForm) }}
+        </article>
+    </section>
+</main>
+    
+{% include 'footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+    <main>
+        <article class="mx-5">
+            <h3 class="mb-5 mt-5 text-center margin-user text-shadow-drop-right">Récupérez votre mot de passe ici !</h3>
+            
+            {{ form_start(form) }}
+                <section class="text-danger">{{ form_errors(form) }}</section>
+                <section class="form-group">
+                    <div class="text-danger">{{ form_errors(form.email) }}</div>
+                    {{ form_label(form.email) }}
+                    <div>{{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}</div>
+                    <small class="form-text text-muted">{{ form_help(form.email) }}</small>
+                </section>        
+                <button class="btn btn-outline-primary mt-3" type="submit">Recupérez</button>
+            {{ form_end(form) }}
+        </article>
+    </main>
+    {% include 'footer.html.twig' %}
+{% endblock %}
