@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use DateTime;
 use App\Entity\User;
+use App\Entity\Booking;
 use App\Entity\Comment;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -36,6 +38,12 @@ class AppFixtures extends Fixture
             $manager->persist($comment);
         }
 
+        $booking = new Booking();
+        $booking->setTitle('test');
+        $booking->setBeginAt(new DateTime('2022-05-05T15:00:00'));
+        $booking->setEndAt(new DateTime('2022-05-05T15:30:00'));
+        $booking->setUser($user);
+        $manager->persist($booking);
         $manager->flush();
     }
 }

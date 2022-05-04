@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserTest extends KernelTestCase
 {
-    public function test()
+    public function test(): void
     {
         $user = (new User())
         ->setPrenom('gj')
@@ -22,7 +22,7 @@ class UserTest extends KernelTestCase
         $this->assertCount(0, $error);
     }
 
-    public function testPrenom()
+    public function testPrenom(): void
     {
         $user = new User();
         $prenom = 'prenom';
@@ -31,7 +31,7 @@ class UserTest extends KernelTestCase
         $this->assertEquals('prenom', $user->getPrenom());
     }
 
-    public function testNom()
+    public function testNom(): void
     {
         $user = new User();
         $nom = 'nom';
@@ -40,7 +40,7 @@ class UserTest extends KernelTestCase
         $this->assertEquals('nom', $user->getNom());
     }
 
-    public function testMail()
+    public function testMail(): void
     {
         $user = new User();
         $mail = 'nom@mail.com';
@@ -49,7 +49,7 @@ class UserTest extends KernelTestCase
         $this->assertEquals('nom@mail.com', $user->getEmail());
     }
 
-    public function testPassword()
+    public function testPassword(): void
     {
         $user = new User();
         $password = 'Test1234?';

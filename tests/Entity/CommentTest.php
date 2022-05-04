@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class CommentTest extends KernelTestCase
 {
-    public function test()
+    public function test(): void
     {
         $comment = (new Comment())
         ->setText('gj')
@@ -21,7 +21,7 @@ final class CommentTest extends KernelTestCase
         $this->assertCount(0, $error);
     }
 
-    public function testContent()
+    public function testContent(): void
     {
         $comment = new Comment();
         $content = 'Test content';
@@ -30,7 +30,7 @@ final class CommentTest extends KernelTestCase
         $this->assertEquals('Test content', $comment->getText());
     }
 
-    public function testDate()
+    public function testDate(): void
     {
         $comment = new Comment();
         $date = new DateTime('2011-01-01T15:03:01.012345Z');
