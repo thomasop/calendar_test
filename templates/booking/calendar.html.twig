@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rendez-vous{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container mt-5">
+    <h1 class="text-center mb-5">Rendez-vous</h1>
+    <div 
+        id="calendar-holder"
+        data-events-url="{{ path('fc_load_events') }}"
+    ></div>
+</main>
+    
+{% include 'footer.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            var calendarEl = document.getElementById('calendar-holder');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                dateClick: function(info) {
+                    window.location.href = "http://127.0.0.1:8000/réservation/new/" + info.dateStr;
+                },
+                validRange: {
+                    start: new Date(),
+                    end: '2022-06-01'
+                },
+                businessHours: {
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                    daysOfWeek: [ 1, 2, 3, 4, 5 ], // Monday - Thursday
+
+                    startTime: '09:00', // a start time (10am in this example)
+                    endTime: '18:00', // an end time (6pm in this example)
+                },
+                weekends: false,
+                defaultView: 'timeGridWeek',
+                minTime: "09:00",
+                maxTime: "18:00",
+                height: 'auto',
+                allDaySlot: false,
+                editable: true,
+                duration: '00:30',
+                eventSources: [
+                    {
+                        url: "{{ path('fc_load_events') }}",
+                        method: "POST",
+                        extraParams: {
+                            filters: JSON.stringify({})
+                        },
+                        failure: () => {
+                            alert("There was an error while fetching FullCalendar!");
+                        },
+                    },
+                ],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek',
+                },
+                buttonText: {
+                    timeGridWeek:'semaine',
+                    today:'aujourd\'hui'
+                },
+                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+                timeZone: 'Europe/Paris',
+                locale: 'fr',
+                eventDrop: function(drop) {
+                    window.location.href = "http://127.0.0.1:8000" + drop.event.url + "/edit/" + drop.event._instance.range.start + "/" + drop.event._instance.range.end;
+                },
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Booking{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <div class="row">
+        <h1 class="text-center mt-5 mb-5">Modifier le rendez-vous</h1>
+
+        {{ form_start(form) }}
+            <section class="text-danger">{{ form_errors(form) }}</section>
+            <section class="form-group">
+                <div class="text-danger">{{ form_errors(form.beginAt) }}</div>
+                {{ form_label(form.beginAt) }}
+                <div>{{ form_widget(form.beginAt) }}</div>
+                <small class="form-text text-muted">{{ form_help(form.beginAt) }}</small>
+            </section>
+            <button name="edit_event" class="btn btn-primary mb-3 mt-3">{{ button_label|default('Enregistrer') }}</button>
+        {{ form_end(form) }}   
+    </div>
+    <a class="btn btn-primary" href="{{ path('booking_index') }}">Retour a la liste</a>
+</main>
+    
+{% include 'footer.html.twig' %}
+{% endblock %}

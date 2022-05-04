@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <figure>
-            <a class="navbar-brand" href=""><img src="{{ asset('/build/dent.1ddb1371.png') }}" alt="logo"></a>
+            <a class="navbar-brand" href="{{ path('home') }}"><img src="{{ asset('/build/dent.1ddb1371.png') }}" alt="logo"></a>
             <figcaption>Dentiste</figcaption>
         </figure>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -10,40 +10,42 @@
         </button>
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="menu navbar-nav mr-auto">
+          <ul class="menu navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link header-link" href="{{ path('home') }}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link header-link" href="{{ path('comment') }}">Avis client</a>
+            </li>
+            {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link header-link" href="{{ path('home') }}">Accueil</a>
+                    <a class="nav-link header-link" href="{{ path('app_logout') }}">Deconnection</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('login') }}">Connection</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link header-link" href="{{ path('comment') }}">Avis client</a>
+                    <a class="nav-link header-link" href="{{ path('register') }}">Inscription</a>
                 </li>
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link header-link" href="{{ path('user', {id: app.user.id}) }}">Profile</a>
-                    </li>
-                {% else %}
-
-                    <li class="nav-item">
-                        <a class="nav-link header-link" href="{{ path('login') }}">Connection</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link header-link" href="{{ path('register') }}">Inscription</a>
-                    </li>
-                {% endif %}
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
-                        <a class="nav-link header-link" href="{{ path('userall') }}">Utilisateur</a>
-                    </li>
-                {% endif %}
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link header-link" href="{{ path('app_logout') }}">Deconnection</a>
-                    </li>
-                {% endif %}
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
-                    <a class="nav-link header-link" href="{{ path('app_contact') }}">Nous contactez</a>
+                    <a class="nav-link header-link" href="{{ path('user', {id: app.user.id}) }}">Profile</a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('booking_calendar') }}">Rendez vous</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link header-link" href="{{ path('userall') }}">Utilisateur</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link header-link" href="{{ path('app_contact') }}">Nous contactez</a>
+            </li>
+          </ul>
         </div>
     </nav>
 </header>

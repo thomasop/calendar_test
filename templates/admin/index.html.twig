@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrateur{% endblock %}
+
+{% block body %}
+<main>
+    <section>
+    <h1>Interface administrateur</h1>
+        <article>
+        <h2>liste des utilisateurs</h2>
+        {% if users|length > 0 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>pseudo</th>
+                        <th>email</th>
+                        <th>supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    {% for user in users %}
+                        <td>{{ user.pseudo }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><a href="{{ path('admin_delete', {id: user.id}) }}">oui</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>aucun utilisateur enregisté</p>
+        {% endif %}
+        </article>
+    </section>
+</main>
+{% endblock %}

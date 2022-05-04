@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+    <section class="text-danger">{{ form_errors(form) }}</section>
+    <section class="form-group">
+        <div class="text-danger">{{ form_errors(form.beginAt) }}</div>
+        {{ form_label(form.beginAt) }}
+        <div>{{ form_widget(form.beginAt) }}</div>
+        <small class="form-text text-muted">{{ form_help(form.beginAt) }}</small>
+    </section>
+    <section class="form-group">
+        <div class="text-danger">{{ form_errors(form.title) }}</div>
+        {{ form_label(form.title) }}
+        <div>{{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}</div>
+        <small class="form-text text-muted">{{ form_help(form.title) }}</small>
+    </section>
+    <button class="btn btn-primary mb-3 mt-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

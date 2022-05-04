@@ -12,8 +12,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class CalendarSubscriber implements EventSubscriberInterface
 {
+    /** @var BookingRepository */
     private $bookingRepository;
+    /** @var UrlGeneratorInterface */
     private $router;
+    /** @var TokenStorageInterface */
     private $tokenStorage;
 
     public function __construct(
@@ -26,14 +29,14 @@ class CalendarSubscriber implements EventSubscriberInterface
         $this->tokenStorage = $tokenStorage;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             CalendarEvents::SET_DATA => 'onCalendarSetData',
         ];
     }
 
-    public function onCalendarSetData(CalendarEvent $calendar)
+    public function onCalendarSetData(CalendarEvent $calendar): void
     {
         $start = $calendar->getStart();
         $end = $calendar->getEnd();

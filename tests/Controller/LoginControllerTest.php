@@ -30,7 +30,7 @@ class LoginControllerTest extends WebTestCase
         ]);
         $this->client->submit($form);
         $this->client->followRedirect();
-        $this->assertSelectorTextContains('h1', 'Déjà connecté');
+        $this->assertSelectorTextContains('h1', 'Accueil');
     }
 
     public function testLogout(): void

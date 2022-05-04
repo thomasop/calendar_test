@@ -6,6 +6,10 @@
         "autoprefixer": "10.4.2",
         "bootstrap": "5.1.3",
         "core-js": "^3.0.0",
+        "css-loader": "4.3.0",
+        "file-loader": "^6.0.0",
+        "jquery": "3.6.0",
+        "mini-css-extract-plugin": "1.2.0",
         "postcss-loader": "6.0.0",
         "regenerator-runtime": "^0.13.2",
         "sass": "1.49.8",
@@ -21,6 +25,11 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@popperjs/core": "2.11.2"
+        "@fullcalendar/core": "5.11.0",
+        "@fullcalendar/daygrid": "5.11.0",
+        "@fullcalendar/interaction": "5.11.0",
+        "@fullcalendar/timegrid": "5.11.0",
+        "@popperjs/core": "2.11.2",
+        "fullcalendar": "5.11.0"
     }
 }

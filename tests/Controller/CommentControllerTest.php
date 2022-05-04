@@ -78,7 +78,8 @@ class CommentControllerTest extends WebTestCase
         $userRepository = static::getContainer()->get(UserRepository::class);
         $testUser = $userRepository->findOneByEmail('admin@mail.com');
 
-        $this->client->loginUser($testUser);        $crawler = $this->client->request('GET', '/commentaire/suppression/1');
+        $this->client->loginUser($testUser);
+        $crawler = $this->client->request('GET', '/commentaire/suppression/1');
         static::assertEquals(
         Response::HTTP_FOUND,
         $this->client->getResponse()->getStatusCode()
