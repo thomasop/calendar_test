@@ -2,6 +2,12 @@
 
 Welcome in your calendar_test.
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/553781aff7484a89b10c2d082d9f76a8)](https://www.codacy.com/gh/thomasop/calendar_test/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=thomasop/calendar_test&amp;utm_campaign=Badge_Grade)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/dc2e0977e40cf8a26fe0/maintainability)](https://codeclimate.com/github/thomasop/calendar_test/maintainability)
+
+[![Build Status](https://app.travis-ci.com/thomasop/calendar_test.svg?branch=main)](https://app.travis-ci.com/thomasop/calendar_test)
+
 ## How to install the project
 
 ### Prerequisite
