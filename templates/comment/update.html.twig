@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis client{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <div class="row">
+        <section>
+            <h1 class="text-center mt-5 mb-5">Modfification de l'avis</h1>
+            {{ form_start(form) }}
+                <section class="text-danger">{{ form_errors(form) }}</section>
+                <section class="form-group">
+                    <div class="text-danger">{{ form_errors(form.text) }}</div>
+                    {{ form_label(form.text) }}
+                    <div>{{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}</div>
+                    <small class="form-text text-muted">{{ form_help(form.text) }}</small>
+                </section>
+                <button name="comment_update" class="btn btn-outline-primary mb-4 mt-3" type="submit">envoyer</button>
+            {{ form_end(form) }}
+        </section>
+    </div>
+</main>
+{% include 'footer.html.twig' %}
+{% endblock %}

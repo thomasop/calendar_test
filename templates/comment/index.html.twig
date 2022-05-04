@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis client{% endblock %}
+
+{% block body %}
+{% include 'header.html.twig' %}
+{% include 'flash.html.twig' %}
+<main class="container">
+    <div class="row">
+        <section>
+            <h1 class="text-center mt-5 mb-5">Avis client</h1>
+            <div class="d-flex flex-column w-25">
+                <a class="btn btn-primary" href="">Retour page d'accueil</a>
+                {% if app.user %}
+                    {% if app.user.roles[0] == "ROLE_USER" or "ROLE_ADMIN"%}
+                        <button name="modal" id="myInput" type="button" class="btn btn-primary mt-5 mb-5" data-toggle="modal" data-target="#exampleModal">
+                            Créer un nouveau post
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Créer un post</h5>
+                                        <button id="close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{ form_start(form) }}
+                                                <section class="text-danger">{{ form_errors(form) }}</section>
+                                                <section class="form-group">
+                                                    <div class="text-danger">{{ form_errors(form.text) }}</div>
+                                                    {{ form_label(form.text) }}
+                                                    <div>{{ form_widget(form.text, { 'attr': {'class': 'form-control'} }) }}</div>
+                                                    <small class="form-text text-muted">{{ form_help(form.text) }}</small>
+                                                </section>
+                                                <button name="add" class="btn btn-outline-primary mb-4" type="submit">envoyer</button>
+                                            {{ form_end(form) }}
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button name="comment_add" id="closeFooter" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% if comments|length > 0 %}
+                <p>il y a {{ comments|length }} commentaires actuellement.</p>
+                {% for comment in comments %}
+                <article class="bg-light border border-4 border-dark rounded mt-2 padding-left pb-3">
+                    <h2>{{ comment.user.prenom|capitalize }} {{ comment.user.nom|capitalize }}</h2>
+                    <p>{{ comment.text }}</p>
+                    <p>{{ comment.createdAt|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY 'à' HH'h'mm") }}</p>
+                    {% if app.user %}
+                        {% if is_granted('ROLE_ADMIN') or comment.user.id == app.user.id %}
+                            <div class="d-flex justify-content-around">
+                                <a class="btn btn-primary" href="{{ path('comment_update', {id: comment.id}) }}">Modifiez</a>
+                                {{ include('comment/delete_form.html.twig') }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </article>
+                {% endfor %}
+                {% if precedant >= 0 %}
+                    <a class="btn btn-primary mt-3" href="{{ path('comment', { offset: precedant }) }}">precedant</a>
+                {% endif %}
+                {% if suivant < comments|length %}
+                    <a class="btn btn-primary mt-3" href="{{ path('comment', { offset: suivant }) }}">suivant</a>
+                {% endif %}
+            {% else %}
+                <p>Aucun commentaires</p>
+            {% endif %}
+        </section>
+    </div>
+</main>
+{% include 'footer.html.twig' %}
+{% endblock %}
